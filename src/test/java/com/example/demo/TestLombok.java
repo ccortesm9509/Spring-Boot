@@ -2,17 +2,19 @@ package com.example.demo;
 
 import com.example.demo.modelo.Book;
 import com.example.demo.modelo.Car;
+import com.example.demo.modelo.Session;
+import com.example.demo.modelo.Student;
 import io.vavr.collection.List;
 import io.vavr.control.Try;
 import lombok.*;
-import org.junit.Assert;
 import org.junit.Test;
-import io.vavr.*;
 import com.example.demo.modelo.Person;
 
-import javax.validation.constraints.AssertTrue;
+
+import java.util.Date;
 
 import static junit.framework.TestCase.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 public class TestLombok {
@@ -164,5 +166,36 @@ public class TestLombok {
     }
 
 
+
+    @Test
+    public void equalsForAtributeInObject(){
+        val sessionDate = new Date();
+        val st = new Student("1234",
+                "nameTest" ,
+                "lastNameTest" ,
+                11,
+                "1");
+        val firstSession = new Session("teacher", sessionDate, List.of(st));
+        val secondSession = new Session("teacher", sessionDate, List.of(st));
+
+        assertTrue(firstSession.getStudents().equals(secondSession.getStudents()));
+        assertFalse(firstSession.equals(secondSession));
+    }
+
+    @Test
+    public void hashCodeForObjects(){
+        val st = new Student("1234",
+                "nameTest" ,
+                "lastNameTest" ,
+                11,
+                "1");
+        val st2 = new Student("1234",
+                "nameTest" ,
+                "lastNameTest" ,
+                11,
+                "1");
+
+        assertTrue(st.hashCode() == st2.hashCode());
+    }
 
 }
