@@ -1,6 +1,8 @@
 package com.example.demo;
 
 import com.example.demo.modelo.Book;
+import com.example.demo.modelo.Car;
+import io.vavr.collection.List;
 import io.vavr.control.Try;
 import lombok.*;
 import org.junit.Assert;
@@ -148,4 +150,19 @@ public class TestLombok {
         assertEquals(expected.toString().toUpperCase(),
                 "PERSON(ID=1234, NAME=NAMETEST, LASTNAME=LASTNAMETEST, AGE=11)");
     }
+
+
+    @Test
+    public void testWithData(){
+        val newCar = new Car("Renault", "Logan", "2012");
+        val newCar2 = new Car("Renault", "Logan", "2012");
+        val carList = List.of(newCar, newCar2).toSet();
+        assertEquals(newCar.toString(),
+                "Car(marca=Renault, modelo=Logan, año=2012)");
+        assertEquals(newCar.getAño().toString(),"2012");
+        assertEquals(carList.size(),1);
+    }
+
+
+
 }
