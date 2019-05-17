@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 @Service("servicio")
 public class NotaService {
-    @Autowired
+    @Autowired // inyectar el repositorio ->
     @Qualifier("repositorio")
     private NotasRepository repository;
 

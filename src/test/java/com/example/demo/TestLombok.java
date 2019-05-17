@@ -153,7 +153,6 @@ public class TestLombok {
                 "PERSON(ID=1234, NAME=NAMETEST, LASTNAME=LASTNAMETEST, AGE=11)");
     }
 
-
     @Test
     public void testWithData(){
         val newCar = new Car("Renault", "Logan", "2012");
@@ -164,8 +163,6 @@ public class TestLombok {
         assertEquals(newCar.getAño().toString(),"2012");
         assertEquals(carList.size(),1);
     }
-
-
 
     @Test
     public void equalsForAtributeInObject(){
@@ -198,4 +195,10 @@ public class TestLombok {
         assertTrue(st.hashCode() == st2.hashCode());
     }
 
+
+    @Test
+    public void testWithValue(){
+
+
+    }
 }
